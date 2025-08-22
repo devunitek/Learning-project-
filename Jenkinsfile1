@@ -1,0 +1,17 @@
+pipeline {
+    agent any
+    environment {
+        BASE_DIR = "/home/unitekserver/projects/web-projects"
+    }
+    stages {
+        stage('Deploy Project') {
+            steps {
+                script {
+                    echo "🔹 Deploying project..."
+                    // Run deployment script
+                    sh "bash $BASE_DIR/bash/deployment.sh $GIT_URL"
+                }
+            }
+        }
+    }
+}
